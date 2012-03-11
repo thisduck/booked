@@ -12,6 +12,9 @@ gem 'mongo_mapper'
 # forms
 gem 'simple_form'
 
+# auth
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -44,7 +47,7 @@ gem 'jquery-rails'
 
 group :test do
   gem 'rspec-rails'
-  gem 'cucumber-rails', require: false
+  gem 'cucumber-rails', :require => false
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
@@ -54,5 +57,8 @@ group :development do
   gem 'guard-spork'
   gem 'guard-cucumber'
   gem 'guard-rspec'
+end
+
+group :development, :test do
   gem 'awesome_print'
 end

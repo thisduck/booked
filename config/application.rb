@@ -56,6 +56,8 @@ module Book
     # parameters by using an attr_accessible or attr_protected declaration.
     # config.active_record.whitelist_attributes = true
     config.generators do |g|
+      g.view_specs false
+      g.helper_specs false
       g.orm :mongo_mapper
       g.test_framework :rspec
     end
