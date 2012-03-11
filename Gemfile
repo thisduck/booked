@@ -9,6 +9,9 @@ gem 'rails', '3.2.2'
 gem 'bson_ext'
 gem 'mongo_mapper'
 
+# forms
+gem 'simple_form'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -41,6 +44,15 @@ gem 'jquery-rails'
 
 group :test do
   gem 'rspec-rails'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', require: false
   gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+end
+
+group :development do
+  gem 'guard-spork'
+  gem 'guard-cucumber'
+  gem 'guard-rspec'
+  gem 'awesome_print'
 end
