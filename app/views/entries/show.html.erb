@@ -1,15 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 
-<article class="entry">
-<h4><%= @entry.type_of.singularize %></h4>
-<h1><%= @entry.title %> </h1>
+<div class="entry-container">
+  <article class="entry">
+  <h4><%= @entry.type_of.singularize %></h4>
+  <h1><%= @entry.title %> </h1>
 
-<div>
-  <%= raw markdown h @entry.body %>
+  <div>
+    <%= raw markdown h @entry.body %>
+  </div>
+
+  </article>
+
+  <div class="response fixed-bottom">
+    <h4> Response </h4>
+    <h5> Navigate </h5>
+    <div class="nav" style="font-size: 18px; float: right;">
+      <a class="back" href="#">
+        <i class="icon-arrow-left"></i>
+      </a>
+
+      <%= link_to @random do %>
+        <i class="icon-arrow-right"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <br style="clear: both;" />
 </div>
-
-</article>
 
 <!--
 <%= link_to 'Edit', edit_entry_path(@entry) %> |

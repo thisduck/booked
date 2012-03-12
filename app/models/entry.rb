@@ -23,4 +23,13 @@ class Entry
   def to_param
     "#{id}-#{type_of.parameterize}-#{slug}"
   end
+
+  def self.random(id = nil)
+    query = {
+      :limit => 1,
+      :skip => rand(Entry.count())
+    }
+    query[:_id.ne] = id if id
+    Entry.all(query).first
+  end
 end

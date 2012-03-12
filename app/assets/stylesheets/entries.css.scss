@@ -1,7 +1,54 @@
 // Place all the styles related to the entries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.entry-container {
+  width: 50em;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
 article.entry {
   width: 30em;
+}
 
+.response {
+  position: fixed;
+  bottom: 2em;
+  right: 16.2em;
+
+  width: 10em;
+  margin-left: 3em;
+
+  h4, h5 {
+    text-align: right;
+    margin: 0;
+}
+
+.icon-arrow-right {
+  margin-left: 3em;
+}
+
+.nav {
+  i:hover {
+    color: #fe57a1;
+}
+}
+
+a, a:hover, a:visited {
+  color: #222;
+  text-decoration: none;
+}
+
+&.fixed {
+  position: fixed;
+  top: 0;
+}
+
+&.fixed-bottom {
+  #position: fixed;
+  #bottom: 1em;
+  #background: #f8f8f8;
+}
 }

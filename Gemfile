@@ -15,6 +15,8 @@ gem 'simple_form'
 # helpers
 gem 'formatize'
 gem 'mm-sluggable'
+gem 'font-awesome-rails'
+
 
 # auth
 gem 'omniauth'

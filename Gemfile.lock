@@ -73,6 +73,8 @@ GEM
       factory_girl (~> 2.6.0)
       railties (>= 3.0.0)
     ffi (1.0.11)
+    font-awesome-rails (0.2.1)
+      railties (~> 3.1)
     formatize (1.1.0)
       RedCloth (~> 4.2)
       actionpack (~> 3.0)
@@ -206,6 +208,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   factory_girl_rails
+  font-awesome-rails
   formatize
   guard-cucumber
   guard-rspec
