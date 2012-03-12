@@ -20,7 +20,7 @@ class EntriesController < ApplicationController
   # GET /entries/1
   # GET /entries/1.json
   def show
-    @random = Entry.random
+    @random = Entry.random(@entry.id)
 
     respond_to do |format|
       format.html # show.html.erb

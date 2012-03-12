@@ -14,41 +14,48 @@ article.entry {
 }
 
 .response {
-  position: fixed;
-  bottom: 2em;
-  right: 16.2em;
+  margin-top: 3em;
 
-  width: 10em;
-  margin-left: 3em;
 
   h4, h5 {
-    text-align: right;
+    clear: both;
     margin: 0;
-}
+  }
 
-.icon-arrow-right {
-  margin-left: 3em;
-}
+  .vote {
+    margin-left: 1em;
+    float: left;
+  }
 
-.nav {
+
+  .icon-resize-horizontal {
+    margin: 0 1em;
+  }
+
   i:hover {
     color: #fe57a1;
-}
-}
+  }
 
-a, a:hover, a:visited {
-  color: #222;
-  text-decoration: none;
-}
+  a, a:visited {
+    font-family: "PT Sans", Georgia, Times, "Times New Roman", serif;
+    color: #222;
+    text-decoration: none;
 
-&.fixed {
-  position: fixed;
-  top: 0;
-}
+    h4 {
+      color: #222;
+    }
+  }
 
-&.fixed-bottom {
-  #position: fixed;
-  #bottom: 1em;
-  #background: #f8f8f8;
-}
+  a:hover {
+    color: #fe57a1;
+    h4 {
+      color: #fe57a1;
+    }
+  }
+
+
+  .next {
+    margin-top: 1em;
+    font-size: 18px;
+  }
 }

@@ -12,18 +12,28 @@
 
   </article>
 
-  <div class="response fixed-bottom">
-    <h4> Response </h4>
-    <h5> Navigate </h5>
-    <div class="nav" style="font-size: 18px; float: right;">
-      <a class="back" href="#">
-        <i class="icon-arrow-left"></i>
+  <div class="response">
+    <h4 style="float: left"> Response </h4>
+    <div class="vote">
+      <a class="up" href="#">
+        <i class="icon-thumbs-up"></i>
       </a>
 
-      <%= link_to @random do %>
-        <i class="icon-arrow-right"></i>
-      <% end %>
+      <a class="meh" href="#">
+        <i class="icon-resize-horizontal"></i>
+      </a>
+
+      <a class="down" href="#">
+        <i class="icon-thumbs-down"></i>
+      </a>
     </div>
+
+    <h4><a href="#"> Comment </a></h4>
+
+    <%= link_to @random, :class => "next" do %>
+      <h4 style="display: inline;"> Next </h4>
+      <i class="icon-arrow-right"></i> 
+    <% end %>
   </div>
 
   <br style="clear: both;" />
