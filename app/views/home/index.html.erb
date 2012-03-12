@@ -1,5 +1,10 @@
 <% if logged_in? %>
   <%= link_to "Logout", "/logout" %>
+
+  <% if current_user.admin? %>
+    <%= link_to "Add Entry", new_entry_path %>
+  <% end %>
 <% else %>
   <%= link_to "Login", "/auth/twitter" %>
 <% end %>
+  
