@@ -16,6 +16,7 @@ gem 'simple_form'
 gem 'formatize'
 gem 'mm-sluggable'
 gem 'font-awesome-rails'
+gem 'tipsy-rails'
 
 # auth
 gem 'omniauth'

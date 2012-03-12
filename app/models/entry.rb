@@ -33,9 +33,14 @@ class Entry
       :limit => 1,
       :skip => rand(Entry.count())
     }
-    query[:_id.ne] = id if id
     query[:voters.ne] = user.id if user
-    Entry.all(query).first
+    found = false
+    while !found
+      entry = Entry.all(query).first
+      found = id ? entry.id != id : true
+    end
+
+    entry
   end
 
   def vote(user, type)

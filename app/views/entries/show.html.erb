@@ -15,15 +15,15 @@
   <div class="response">
     <h4 style="float: left"> Response </h4>
     <div class="vote">
-      <a class="up" data-direction="up" href="#">
+      <a class="up" data-direction="up" href="#" rel="tooltip" title="up vote">
         <i class="icon-thumbs-up"></i>
       </a>
 
-      <a class="meh" data-direction="meh" href="#">
+      <a class="meh" data-direction="meh" href="#" rel="tooltip" title="meh vote">
         <i class="icon-resize-horizontal"></i>
       </a>
 
-      <a class="down" data-direction="down" href="#">
+      <a class="down" data-direction="down" href="#" rel="tooltip" title="down vote">
         <i class="icon-thumbs-down"></i>
       </a>
     </div>
@@ -44,6 +44,8 @@
     <% if vote = @entry.vote_by(current_user) %>
       $(".vote a.<%= vote.type_of %>").addClass("selected");
     <% end %>
+
+    $('.vote a').tipsy({gravity: 's'});
   });
 </script>
 
