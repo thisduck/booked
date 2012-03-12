@@ -1,6 +1,8 @@
 class User
   include MongoMapper::Document
 
+  key :type_of, String, :default => "user"
+
   key :name, String
   key :email, String
   key :link, String
@@ -30,5 +32,21 @@ class User
 
   def self.auth_key auth_hash
     "#{auth_hash[:provider]}-#{auth_hash[:uid]}"
+  end
+
+  def admin?
+    type_of == "admin"
+  end
+
+  def user?
+    type_of == "user"
+  end
+
+  def editor?
+    type_of == "editor"
+  end
+
+  def can_edit?
+    admin? || editor?
   end
 end

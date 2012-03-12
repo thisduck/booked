@@ -44,4 +44,34 @@ describe User do
       end
     end
   end
+
+  context "permissions" do
+    it "checks for admin permissions" do
+      user = FactoryGirl.create(:admin)
+      user.should be_admin
+    end
+    it "checks for editor permissions" do
+      user = FactoryGirl.create(:editor)
+      user.should be_editor
+    end
+    it "checks for user permissions" do
+      user = FactoryGirl.create(:user)
+      user.should be_user
+    end
+
+    it "checks that admin can edit" do
+      user = FactoryGirl.create(:admin)
+      user.should be_can_edit
+    end
+
+    it "checks that editor can edit" do
+      user = FactoryGirl.create(:editor)
+      user.should be_can_edit
+    end
+
+    it "checks that user cannot edit" do
+      user = FactoryGirl.create(:user)
+      user.should_not be_can_edit
+    end
+  end
 end
