@@ -28,12 +28,13 @@ class Entry
     "#{id}-#{type_of.parameterize}-#{slug}"
   end
 
-  def self.random(id = nil)
+  def self.random(id = nil, user = nil)
     query = {
       :limit => 1,
       :skip => rand(Entry.count())
     }
     query[:_id.ne] = id if id
+    query[:voters.ne] = user.id if user
     Entry.all(query).first
   end
 
