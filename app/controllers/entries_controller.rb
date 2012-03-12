@@ -1,5 +1,7 @@
 class EntriesController < ApplicationController
   before_filter do
+    return redirect_to(root_url) if !logged_in?
+
     if params.has_key? :id
       Rails.logger.info params[:id].split("-").first
       @entry = Entry.find params[:id].split("-").first
@@ -82,5 +84,10 @@ class EntriesController < ApplicationController
       format.html { redirect_to entries_url }
       format.json { head :no_content }
     end
+  end
+
+  def vote
+    @entry.vote(current_user, params[:direction])
+    render :json => {}
   end
 end

@@ -17,7 +17,6 @@ gem 'formatize'
 gem 'mm-sluggable'
 gem 'font-awesome-rails'
 
-
 # auth
 gem 'omniauth'
 gem 'omniauth-twitter'

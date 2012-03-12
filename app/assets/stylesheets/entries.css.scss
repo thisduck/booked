@@ -25,6 +25,13 @@ article.entry {
   .vote {
     margin-left: 1em;
     float: left;
+
+    a.selected {
+      color: #fe57a1;
+      i {
+        color: #fe57a1;
+      }
+    }
   }
 
 

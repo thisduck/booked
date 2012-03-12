@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 
-<div class="entry-container">
+<div class="entry-container" data-id="<%= @entry.id %>">
   <article class="entry">
   <h4><%= @entry.type_of.singularize %></h4>
   <h1><%= @entry.title %> </h1>
 
   <div>
-    <%= raw markdown h @entry.body %>
+    <%= raw markdown @entry.body %>
   </div>
 
   </article>
@@ -15,15 +15,15 @@
   <div class="response">
     <h4 style="float: left"> Response </h4>
     <div class="vote">
-      <a class="up" href="#">
+      <a class="up" data-direction="up" href="#">
         <i class="icon-thumbs-up"></i>
       </a>
 
-      <a class="meh" href="#">
+      <a class="meh" data-direction="meh" href="#">
         <i class="icon-resize-horizontal"></i>
       </a>
 
-      <a class="down" href="#">
+      <a class="down" data-direction="down" href="#">
         <i class="icon-thumbs-down"></i>
       </a>
     </div>
@@ -38,6 +38,14 @@
 
   <br style="clear: both;" />
 </div>
+
+<script>
+  $(function() {
+    <% if vote = @entry.vote_by(current_user) %>
+      $(".vote a.<%= vote.type_of %>").addClass("selected");
+    <% end %>
+  });
+</script>
 
 <!--
 <%= link_to 'Edit', edit_entry_path(@entry) %> |

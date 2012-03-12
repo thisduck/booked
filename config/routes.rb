@@ -1,5 +1,9 @@
 Book::Application.routes.draw do
-  resources :entries
+  resources :entries do
+    member do
+      post :vote
+    end
+  end
 
   resources :users
 
