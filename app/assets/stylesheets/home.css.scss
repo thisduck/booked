@@ -1,3 +1,200 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html {
+  font-size: 115%;
+}
+
+body {
+  font-family: "PT Serif", Georgia, Times, "Times New Roman", serif;
+  line-height: 1.5em;
+  background-color: #f8f8f8;
+  color: #222;
+}
+
+body > .header {
+  background-color: #333;
+
+  padding: 6.5em 1em 1em 1em;
+  margin-bottom: 2em;
+
+  h1 {
+    font-size: 2.2em;
+    font-family: "PT Serif", "Georgia", "Helvetica Neue", Arial, sans-serif;
+    font-weight: normal;
+    line-height: 1.2em;
+    padding: 0;
+    margin: 0;
+
+    color: #F2F2F2;
+    text-decoration: none;
+
+    a, a:hover, a:visited {
+      color: #F2F2F2;
+      text-decoration: none;
+    }
+  }
+
+  h2 {
+    margin: .2em 0 0;
+    font-size: 1em;
+    color: #AAA;
+    font-weight: normal;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "PT Sans", Georgia, Times, "Times New Roman", serif;
+  text-transform:lowercase;
+}
+
+h4 {
+  color: #AAA;
+}
+
+.header {
+  h1 {
+    font-family: "PT Serif", Georgia, Times, "Times New Roman", serif
+  }
+}
+
+.header.nav {
+  a, a:visited {
+    color: #222;
+    text-decoration: none;
+  }
+
+  h1 {
+    margin-bottom: 2em;
+  }
+}
+
+#container {
+  padding: 0 3em;
+
+}
+
+.post {
+  margin-bottom: 2em;
+
+  header {
+    h2 {
+      margin-top: 2em;
+    }
+
+    h3 {
+      margin: -1em 0 0 0;
+      padding-left: 1em;
+      color: #AAA;
+      font-size: .9em;
+    }
+  }
+}
+
+section.list {
+  header h1 {
+    margin-bottom: 2em;
+    font-size: 200%;
+  }
+
+  &.aphorisms article hr {
+    margin: 2em auto;
+    width: 300px;
+    height: 5px;
+    background-color: #CCC;
+  }
+
+  article h1 {
+    a, a:visited {
+      color: #222;
+      text-decoration: none;
+    }
+  }
+}
+
+.prev_next {
+
+  p {
+    display: inline;
+  }
+
+  .previous {
+    float: left;
+  }
+
+  .next {
+    float: right;
+  }
+
+  a, a:visited {
+    font-size: .8em;
+    color: #222;
+    text-decoration: none;
+  }
+}
+
+body > .footer {
+  font-size: .7em;
+  background-color: #333;
+
+  padding: 1em 1em 1em 1em;
+  margin-top: 3em;
+  color: #F2F2F2;
+
+  h1 {
+    a, a:hover, a:visited {
+      color: #F2F2F2;
+      text-decoration: none;
+    }
+  }
+
+  .email p {
+    float: right;
+  }
+}
+
+.grid{ margin:0 auto; padding: 0 15px; }
+
+.simple_form {
+  $indent: 120px;
+  label {
+    float: left;
+    width: $indent - 20px;
+    text-align: right;
+    margin: 2px 10px;
+    &.radio, &.checkbox {
+      float: none;
+      margin: 0;
+      width: auto;
+      text-align: left;
+  }
+  &.checkbox {
+    display: block;
+    margin-left: $indent;
+  }
+  &.radio { margin-right: 10px; }
+}
+div.input { margin-bottom: 10px;}
+input.radio_buttons, input.check_boxes {
+  margin-right: 5px;
+}
+.btn, .button { margin-left: $indent; }
+.alert-error {
+  color: #D00;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.hint, .error {
+  clear: left;
+  margin-left: $indent;
+  font-size: 12px;
+  color: #D00;
+  display: block;
+}
+.hint {
+  color: #555;
+  font-style: italic;
+}
+}
+

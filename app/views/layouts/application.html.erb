@@ -5,10 +5,24 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+  <link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-<%= yield %>
+  <div class="header">
+    <h1>nothing much</h1>
+    <h2>just some words</h2>
+  </div>
+
+  <div id="container">
+    <%= yield %>
+  </div>
+
+  <div class="footer">
+  </div>
 
 </body>
 </html>

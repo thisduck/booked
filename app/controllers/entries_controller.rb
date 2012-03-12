@@ -1,4 +1,11 @@
 class EntriesController < ApplicationController
+  before_filter do
+    if params.has_key? :id
+      Rails.logger.info params[:id].split("-").first
+      @entry = Entry.find params[:id].split("-").first
+    end
+  end
+
   # GET /entries
   # GET /entries.json
   def index
@@ -13,7 +20,6 @@ class EntriesController < ApplicationController
   # GET /entries/1
   # GET /entries/1.json
   def show
-    @entry = Entry.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +40,6 @@ class EntriesController < ApplicationController
 
   # GET /entries/1/edit
   def edit
-    @entry = Entry.find(params[:id])
   end
 
   # POST /entries
@@ -56,8 +61,6 @@ class EntriesController < ApplicationController
   # PUT /entries/1
   # PUT /entries/1.json
   def update
-    @entry = Entry.find(params[:id])
-
     respond_to do |format|
       if @entry.update_attributes(params[:entry])
         format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
@@ -72,7 +75,6 @@ class EntriesController < ApplicationController
   # DELETE /entries/1
   # DELETE /entries/1.json
   def destroy
-    @entry = Entry.find(params[:id])
     @entry.destroy
 
     respond_to do |format|

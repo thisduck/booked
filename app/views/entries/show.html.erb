@@ -1,25 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @entry.title %>
-</p>
 
-<p>
-  <b>Body:</b>
-  <%= @entry.body %>
-</p>
+<article class="entry">
+<h4><%= @entry.type_of.singularize %></h4>
+<h1><%= @entry.title %> </h1>
 
-<p>
-  <b>Grouping:</b>
-  <%= @entry.grouping %>
-</p>
+<div>
+  <%= raw markdown h @entry.body %>
+</div>
 
-<p>
-  <b>Day:</b>
-  <%= @entry.day %>
-</p>
+</article>
 
-
+<!--
 <%= link_to 'Edit', edit_entry_path(@entry) %> |
 <%= link_to 'Back', entries_path %>
+-->

@@ -12,6 +12,10 @@ gem 'mongo_mapper'
 # forms
 gem 'simple_form'
 
+# helpers
+gem 'formatize'
+gem 'mm-sluggable'
+
 # auth
 gem 'omniauth'
 gem 'omniauth-twitter'
