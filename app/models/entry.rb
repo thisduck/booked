@@ -4,6 +4,8 @@ class Entry
   key :user_id, ObjectId
   belongs_to :user
 
+  key :type_of, String
+
   key :title, String
   key :body, String
   key :grouping, String
