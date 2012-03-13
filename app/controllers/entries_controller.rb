@@ -61,6 +61,11 @@ class EntriesController < ApplicationController
     respond_with @vote, location: nil
   end
 
+  def tag_vote
+    @vote = @entry.tag_vote(current_user, params[:tag])
+    respond_with({:vote => @vote, :persisted => @vote.persisted?}, location: nil)
+  end
+
   def comment
     @comment = @entry.comment(current_user, params[:comment][:body])
     respond_with({:comment => @comment}, :location => @entry)

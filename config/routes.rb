@@ -3,6 +3,7 @@ Book::Application.routes.draw do
   resources :entries do
     resources :comments
     member do
+      post :tag_vote
       post :vote
       post :comment
     end

@@ -28,6 +28,18 @@
       </a>
     </div>
 
+
+    <h4 style="clear:both;">Tags</h4>
+    <% ['preachy', 'crap', 'clever', 'love', 'life', 'longing', 'funny'].each do |tag| %>
+      <%= link_to '#', :class => "tag", :style => "clear: both;", :"data-tag" => tag do %>
+        <h4 style="display: inline;"> <%= tag %> </h4>
+        <i class="icon-chevron-up"></i> 
+        <% end if @random %>
+    <% end %>
+
+    <br />
+    <br />
+
     <%= link_to @random, :class => "next", :style => "clear: both;" do %>
       <h4 style="display: inline;"> Next </h4>
       <i class="icon-arrow-right"></i> 
@@ -54,6 +66,10 @@
   $(function() {
     <% if vote = @entry.vote_by(current_user) %>
       $(".vote a.<%= vote.type_of %>").addClass("selected");
+    <% end %>
+
+    <% @entry.tags_by(current_user).each do |tag| %>
+      $("a.tag[data-tag=<%= tag.tag %>]").addClass("selected");
     <% end %>
 
     $('.vote a').tipsy({gravity: 's'});

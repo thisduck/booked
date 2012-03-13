@@ -11,13 +11,29 @@ $ ->
     id = $(this).parents(".entry-container").data("id")
     $.ajax
       type: "post"
-      dataType: "script"
+      dataType: "json"
       url: "/entries/" + id + "/vote"
       data:
         direction: $(this).data("direction")
       success: (data) =>
         $(this).siblings().removeClass("selected")
         $(this).addClass("selected")
+    false
+
+  $(".response a.tag").click ->
+    id = $(this).parents(".entry-container").data("id")
+    tag = $(this).data("tag")
+    $.ajax
+      type: "post"
+      dataType: "json"
+      url: "/entries/" + id + "/tag_vote"
+      data:
+        tag: tag
+      success: (data) =>
+        if data.persisted
+          $(this).addClass("selected")
+        else
+          $(this).removeClass("selected")
     false
 
 

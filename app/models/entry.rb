@@ -18,6 +18,9 @@ class Entry
   has_many :rate_votes
   many :comments
 
+  key :tags, Array
+  has_many :tag_votes
+
   validates_presence_of :user_id, :title, :body
 
 
@@ -55,8 +58,28 @@ class Entry
     )
   end
 
+  def tag_vote(user, tag)
+    tag = tag.downcase
+    vote = tag_votes.first(:user_id => user.id, :tag => tag)
+
+    if vote
+      vote.destroy
+    else
+      vote = tag_votes.create(
+        :user_id => user.id,
+        :tag => tag
+      )
+    end
+
+    vote
+  end
+
   def vote_by(user)
     rate_votes.first(:user_id => user.id)
+  end
+
+  def tags_by(user)
+    tag_votes.all(:user_id => user.id)
   end
 
   def comment(user, message)
