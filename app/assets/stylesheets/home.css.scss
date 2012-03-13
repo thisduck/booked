@@ -19,6 +19,10 @@ body > .header {
   padding: 6.5em 1em 1em 1em;
   margin-bottom: 2em;
 
+  a, a:hover, a:visited {
+    text-decoration: none;
+  }
+
   h1 {
     font-size: 2.2em;
     font-family: "PT Serif", "Georgia", "Helvetica Neue", Arial, sans-serif;

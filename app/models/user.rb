@@ -20,8 +20,15 @@ class User
   end
 
   def self.create_by_auth_hash auth_hash
+    Rails.logger.info auth_hash[:info].inspect
+    Rails.logger.info auth_hash[:info][:name]
+    Rails.logger.info auth_hash[:info][:email]
+    handle = auth_hash[:info][:nickname]
+    if !handle || handle.empty?
+      handle = auth_hash[:info][:email].split("@").first if auth_hash[:info][:email].present?
+    end
     user = self.new(
-      :handle => auth_hash[:info][:nickname],
+      :handle => handle || auth_hash[:info][:name],
       :name => auth_hash[:info][:name],
     )
     user.auth_keys = auth_key(auth_hash)

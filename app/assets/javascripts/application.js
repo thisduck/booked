@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require jquery.noisy.min
 //= require tipsy
+//= require jquery.form
 //= require_tree .

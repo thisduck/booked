@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def create
-    Rails.logger.info auth_hash.to_hash.inspect
     @user = User.fetch_by_auth_hash auth_hash
     session[:user_id] = @user.id
 

@@ -16,6 +16,7 @@ class Entry
 
   key :voters, Array
   has_many :rate_votes
+  many :comments
 
   validates_presence_of :user_id, :title, :body
 
@@ -29,18 +30,12 @@ class Entry
   end
 
   def self.random(id = nil, user = nil)
-    query = {
-      :limit => 1,
-      :skip => rand(Entry.count())
-    }
+    query = {}
+    query[:_id.ne] = id if id
     query[:voters.ne] = user.id if user
-    found = false
-    while !found
-      entry = Entry.all(query).first
-      found = id ? entry.id != id : true
-    end
-
-    entry
+    query[:skip] = rand(Entry.count(query))
+    query[:limit] = 1
+    entry = Entry.first(query)
   end
 
   def vote(user, type)
@@ -62,5 +57,15 @@ class Entry
 
   def vote_by(user)
     rate_votes.first(:user_id => user.id)
+  end
+
+  def comment(user, message)
+    comment = comments.build(
+      :body => message
+    )
+    comment.user_id = user.id
+    comment.save
+
+    comment
   end
 end

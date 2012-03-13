@@ -1,10 +1,28 @@
-<% if logged_in? %>
-  <%= link_to "Logout", "/logout" %>
+<div style="width: 30em">
+<%= markdown %{Greetings and salutations dear friend or enemy. Can't leave any one out.
+This site is designed to help us edit, rate and tag material I have written so that we can make a book of it!
 
-  <% if current_user.admin? %>
-    <%= link_to "Add Entry", new_entry_path %>
-  <% end %>
+There are one-liners/aphorisms, poems and short stories. Immediately after each entry you will see rating options. You can "up vote", "meh vote" or "down vote" any entry (essentially, how you're feeling about the words).
+
+You can also add or upvote tags (predefined tags will be displayed which you can upvote, and you can also add your own tags).
+And finally, you can leave a comment if you see any spelling or grammatical error, or if you have questions about word usage, or any comments in general.  Critical comments are specially welcome. If you think something is awful, please let me know!
+
+After each entry, you will also see a "next" link. This will simply load up a random entry that you haven't rated yet.
+
+You will need to login for this, at this moment this is only available through a Twitter or Google account.
+
+There are a lot of entries (around 200), but any entries you can rate would be great.
+
+Thank you so much for this!
+adnan.} %>
+</div>
+
+
+<% if logged_in? %>
+  <%# link_to "Logout", "/logout" %>
+  <%= link_to "Start Editing!", Entry.random(nil, current_user) %>
 <% else %>
-  <%= link_to "Login", "/auth/twitter" %>
+  <%= link_to "Login using Twitter", "/auth/twitter" %> <br />
+  <%= link_to "Login using Google", "/auth/google" %>
 <% end %>
   

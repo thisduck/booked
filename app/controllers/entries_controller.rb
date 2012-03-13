@@ -1,4 +1,5 @@
 class EntriesController < ApplicationController
+  respond_to :html, :json
   before_filter do
     return redirect_to(root_url) if !logged_in?
     return redirect_to(root_url) if [:index, :new, :edit, :update, :destroy].include?(params[:action]) && !current_user.admin?
@@ -12,33 +13,21 @@ class EntriesController < ApplicationController
   # GET /entries.json
   def index
     @entries = Entry.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @entries }
-    end
+    respond_with @entries
   end
 
   # GET /entries/1
   # GET /entries/1.json
   def show
     @random = Entry.random(@entry.id, current_user)
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @entry }
-    end
+    respond_with @entry
   end
 
   # GET /entries/new
   # GET /entries/new.json
   def new
     @entry = Entry.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @entry }
-    end
+    respond_with @entry
   end
 
   # GET /entries/1/edit
@@ -49,45 +38,35 @@ class EntriesController < ApplicationController
   # POST /entries.json
   def create
     @entry = Entry.new(params[:entry])
-
-    respond_to do |format|
-      if @entry.save
-        format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
-        format.json { render json: @entry, status: :created, location: @entry }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
-      end
-    end
+    flash[:notice] =  'Entry was successfully created.' if @entry.save
+    respond_with @entry
   end
 
   # PUT /entries/1
   # PUT /entries/1.json
   def update
-    respond_to do |format|
-      if @entry.update_attributes(params[:entry])
-        format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
-      end
-    end
+    flash[:notice] =  'Entry was successfully updated.' if @entry.update_attributes(params[:entry])
+    respond_with @entry
   end
 
   # DELETE /entries/1
   # DELETE /entries/1.json
   def destroy
     @entry.destroy
-
-    respond_to do |format|
-      format.html { redirect_to entries_url }
-      format.json { head :no_content }
-    end
+    respond_with @entry
   end
 
   def vote
-    @entry.vote(current_user, params[:direction])
-    render :json => {}
+    @vote = @entry.vote(current_user, params[:direction])
+    respond_with @vote, location: nil
+  end
+
+  def comment
+    @comment = @entry.comment(current_user, params[:comment][:body])
+    respond_with({:comment => @comment}, :location => @entry)
+  end
+
+  def comments
+    respond_with @entry.comments
   end
 end

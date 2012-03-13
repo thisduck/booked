@@ -1,7 +1,10 @@
 Book::Application.routes.draw do
+
   resources :entries do
+    resources :comments
     member do
       post :vote
+      post :comment
     end
   end
 

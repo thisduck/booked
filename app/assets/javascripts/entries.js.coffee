@@ -11,6 +11,7 @@ $ ->
     id = $(this).parents(".entry-container").data("id")
     $.ajax
       type: "post"
+      dataType: "script"
       url: "/entries/" + id + "/vote"
       data:
         direction: $(this).data("direction")
@@ -18,3 +19,14 @@ $ ->
         $(this).siblings().removeClass("selected")
         $(this).addClass("selected")
     false
+
+
+  $("#new_comment").ajaxForm
+    dataType: 'json'
+    resetForm: true
+    success: (data) ->
+      $("#comments").append(data.html)
+    error: (xhr) ->
+      console.log xhr
+
+

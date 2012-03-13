@@ -28,12 +28,23 @@
       </a>
     </div>
 
-    <h4><a href="#"> Comment </a></h4>
-
-    <%= link_to @random, :class => "next" do %>
+    <%= link_to @random, :class => "next", :style => "clear: both;" do %>
       <h4 style="display: inline;"> Next </h4>
       <i class="icon-arrow-right"></i> 
+    <% end if @random %>
+
+    <h4>Comments</h4>
+
+    <ul id="comments">
+      <%= render @entry.comments %>
+    </ul>
+
+    <%= simple_form_for([@entry, @entry.comments.build]) do |f| %>
+      <%= f.input :entry_id, :as => :hidden %>
+      <%= f.input :body, :as => :text %>
+      <%= f.submit "add comment" %>
     <% end %>
+
   </div>
 
   <br style="clear: both;" />
