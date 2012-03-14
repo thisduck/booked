@@ -62,6 +62,24 @@
   <br style="clear: both;" />
 </div>
 
+<% if current_user.admin? %>
+<div id="details">
+  <h4> Votes </h4>
+  <ul>
+    <% @entry.rate_votes.group_by(&:type_of).each do |type, group| %>
+      <li title="<%= group.collect{|x| x.user.handle }.join(",") %>"><%= type %>: <%= group.count %></li>
+    <% end %>
+    <li>Total: <%= @entry.voters.count %></li>
+  </ul>
+  <h4> Tags </h4>
+  <ul>
+    <% @entry.tag_votes.group_by(&:tag).each do |tag, group| %>
+      <li title="<%= group.collect{|x| x.user.handle }.join(",") %>"><%= tag %>: <%= group.count %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
 <script>
   $(function() {
     <% if vote = @entry.vote_by(current_user) %>
@@ -73,6 +91,7 @@
     <% end %>
 
     $('.vote a').tipsy({gravity: 's'});
+    $('li[title]').tipsy({gravity: 's'});
   });
 </script>
 

@@ -3,10 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 div.entry-container {
-  width: 50em;
+  width: 35em;
   margin: 0;
   padding: 0;
   position: relative;
+  float: left;
+}
+
+#details {
+  width: 20em;
+  float: left;
 }
 
 article.entry {
