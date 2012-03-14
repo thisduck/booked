@@ -1,3 +1,11 @@
+LANG="en_US.UTF-8"
+LC_ALL="en_US.UTF-8"
+
+if RUBY_VERSION =~ /1.9/
+  Encoding.default_external = Encoding::UTF_8
+  Encoding.default_internal = Encoding::UTF_8
+end
+
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
@@ -69,4 +77,8 @@ end
 
 group :development, :test do
   gem 'awesome_print'
+end
+
+group :production do 
+  gem 'therubyracer'
 end

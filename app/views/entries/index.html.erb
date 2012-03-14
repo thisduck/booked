@@ -21,7 +21,7 @@
     <td><%= entry.day %></td>
     <td><%= link_to 'Show', entry %></td>
     <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
-    <td><%= link_to 'Destroy', entry, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', entry, confirm: 'Are you sure?', method: :delete, remote: true %></td>
   </tr>
 <% end %>
 </table>

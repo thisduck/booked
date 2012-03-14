@@ -1,3 +1,7 @@
+<% if logged_in? %>
+  <%= link_to "Start Editing!", Entry.random(nil, current_user) %>
+<% end %>
+
 <div style="width: 30em">
 <%= markdown %{Greetings and salutations dear friend or enemy. Can't leave any one out.
 This site is designed to help us edit, rate and tag material I have written so that we can make a book of it!
@@ -5,11 +9,11 @@ This site is designed to help us edit, rate and tag material I have written so t
 There are one-liners/aphorisms, poems and short stories. Immediately after each entry you will see rating options. You can "up vote", "meh vote" or "down vote" any entry (essentially, how you're feeling about the words).
 
 You can also upvote tags (predefined tags will be displayed which you can upvote, and you can also add your own tags in the comments).
-And finally, you can leave a comment if you see any spelling or grammatical error, or if you have questions about word usage, or any comments in general.  Critical comments are specially welcome. If you think something is awful, please let me know!
+And finally, you can leave a comment if you see any spelling or grammatical error, or if you have questions about word usage, the rhythm, or any comments in general.  Critical comments are specially welcome. If you think something is awful, please let me know!
 
 After each entry, you will also see a "next" link. This will simply load up a random entry that you haven't rated yet.
 
-You will need to login for this, at this moment this is only available through a Twitter or Google account.
+You will need to login for this, at this moment this is only available through a Google account.
 
 There are a lot of entries (around 200), but any entries you can rate would be great.
 
@@ -22,7 +26,6 @@ adnan.} %>
   <%# link_to "Logout", "/logout" %>
   <%= link_to "Start Editing!", Entry.random(nil, current_user) %>
 <% else %>
-  <%= link_to "Login using Twitter", "/auth/twitter" %> <br />
   <%= link_to "Login using Google", "/auth/google" %>
 <% end %>
   

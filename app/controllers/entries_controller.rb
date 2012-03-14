@@ -12,7 +12,7 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @entries = Entry.all
+    @entries = Entry.all :order => [[:type_of, 1], [:day, 1]]
     respond_with @entries
   end
 
