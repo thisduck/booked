@@ -10,10 +10,10 @@ class RateVote
   key :type_of, String, :in => ['up', 'down', 'meh']
 
   after_create do
-    entry.add_to_set(:voters => user.id)
+    entry.add_voter(user)
   end
 
   after_destroy do
-    entry.pull(:voters => user.id)
+    entry.remove_voter(user)
   end
 end

@@ -2,24 +2,22 @@
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Body</th>
     <th>Type of</th>
-    <th>Grouping</th>
+    <th>Title</th>
     <th>Day</th>
-    <th></th>
+    <th>Score</th>
+    <th>Votes</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @entries.each do |entry| %>
   <tr>
-    <td><%= entry.title %></td>
-    <td><%= entry.body %></td>
     <td><%= entry.type_of %></td>
-    <td><%= entry.grouping %></td>
+    <td><%= link_to entry.title, entry %></td>
     <td><%= entry.day %></td>
-    <td><%= link_to 'Show', entry %></td>
+    <td><%= entry.score %></td>
+    <td><%= entry.voters.count %></td>
     <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
     <td><%= link_to 'Destroy', entry, confirm: 'Are you sure?', method: :delete, remote: true %></td>
   </tr>

@@ -12,8 +12,7 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @entries = Entry.all :order => [[:type_of, 1], [:day, 1]]
-    @entries.sort!{|x| x.voters.count }
+    @entries = Entry.all :order => :score.desc
     respond_with @entries
   end
 

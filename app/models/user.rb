@@ -11,6 +11,9 @@ class User
   key :auth_keys, Array
   attr_accessible :name, :email, :handle
 
+  has_many :tag_votes
+  has_many :rate_votes
+
   def self.fetch_by_auth_hash auth_hash
     find_with_auth_hash(auth_hash) || create_by_auth_hash(auth_hash)
   end

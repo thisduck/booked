@@ -21,6 +21,8 @@ class Entry
   key :tags, Array
   has_many :tag_votes
 
+  key :score, Float, :default => 0
+
   validates_presence_of :user_id, :title, :body
 
 
@@ -82,6 +84,21 @@ class Entry
     tag_votes.all(:user_id => user.id)
   end
 
+  def set_score
+    value = {'up' => 1.0, 'meh' => -0.5, 'down' => -1.0}
+    votes = rate_votes.group_by(&:type_of)
+    total = 0
+    count = 0
+    votes.each do |type, group|
+      c = (group || []).count
+      total += c * value[type]
+      count += c
+    end
+
+    self.score = total.to_f
+    self.voters = rate_votes.collect &:user_id
+  end
+
   def comment(user, message)
     comment = comments.build(
       :body => message
@@ -90,5 +107,15 @@ class Entry
     comment.save
 
     comment
+  end
+
+  def add_voter(user)
+    set_score
+    save
+  end
+
+  def remove_voter(user)
+    set_score
+    save
   end
 end

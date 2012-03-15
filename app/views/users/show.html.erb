@@ -6,19 +6,19 @@
 </p>
 
 <p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>Link:</b>
-  <%= @user.link %>
-</p>
-
-<p>
   <b>Handle:</b>
   <%= @user.handle %>
 </p>
+
+
+<ul>
+  <% @user.rate_votes.group_by(&:type_of).each do |type, votes| %>
+    <li><%= type %> : <%= votes.count %></li>
+  <% end %>
+  <% @user.rate_votes.each do |vote| %>
+    <li><%= vote.type_of %> : <%= link_to vote.entry.title, vote.entry %></li>
+  <% end %>
+</ul>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
